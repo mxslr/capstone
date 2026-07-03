@@ -1,0 +1,53 @@
+{
+  "letters": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z"
+  ],
+  "inputSize": 130,
+  "valAccuracy": 0.9930595720069404,
+  "twoHanded": [
+    "A",
+    "B",
+    "D",
+    "G",
+    "H",
+    "K",
+    "M",
+    "P",
+    "Q",
+    "S",
+    "T",
+    "W",
+    "X"
+  ],
+  "canonicalized": true,
+  "datasets": [
+    "kaggle:agungmrf/indonesian-sign-language-bisindo",
+    "kaggle:achmadnoer/alfabet-bisindo"
+  ],
+  "trainedAt": "2026-07-03T01:21:05.526Z"
+}

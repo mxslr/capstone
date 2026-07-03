@@ -39,3 +39,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# dataset hasil ekstraksi landmark (besar, bisa diregenerasi)
+/data/landmarks_*.json
+/data/hand_landmarker.task
+
+# SAPA: data mentah dan artefak training (regenerable, besar)
+# Lihat data/README.md untuk cara regenerasi.
+/data/*.json
+!/data/word_labels.json
+/data/*.task
+/data/*.keras
+/data/*.h5
+/data/*.partial.json
+
+# cache kagglehub lokal jika disalin ke repo
+/scripts/__pycache__
