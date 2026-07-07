@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PersonStanding } from "lucide-react";
 import { AlphabetLearning } from "@/components/alphabet-learning";
 import { PageHeader } from "@/components/page-header";
 
@@ -12,6 +13,7 @@ export default function BelajarPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
       <PageHeader
+        icon={PersonStanding}
         title="Belajar alfabet"
         scope="26 huruf"
         description="Pilih huruf dan avatar memperagakan bentuk tangannya. Ulangi atau perlambat sesukamu."

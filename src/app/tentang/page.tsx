@@ -6,25 +6,25 @@ import { Reveal } from "@/components/reveal";
 export const metadata: Metadata = {
   title: "Tentang",
   description:
-    "Kenapa SAPA dibangun untuk BISINDO dan prinsip yang kami pegang: privasi on-device, cakupan jujur, validasi bersama komunitas Tuli.",
+    "Kenapa KawanTuli dibangun untuk BISINDO dan prinsip yang kami pegang: privasi on-device dan tumbuh bersama komunitas Tuli.",
 };
 
 const principles = [
   {
     title: "BISINDO, bukan SIBI",
-    body: "BISINDO adalah bahasa isyarat yang tumbuh alami di komunitas Tuli Indonesia. SAPA dibangun untuk BISINDO dan tidak memakai referensi SIBI.",
+    body: "BISINDO adalah bahasa isyarat yang tumbuh alami di komunitas Tuli Indonesia. KawanTuli dibangun untuk BISINDO dan tidak memakai referensi SIBI.",
   },
   {
     title: "Privasi bukan fitur tambahan",
     body: "Semua deteksi tangan berjalan di perangkatmu. Tidak ada frame video yang dikirim ke server, dan kamera baru aktif setelah kamu setuju.",
   },
   {
-    title: "Cakupan yang jujur",
-    body: "SAPA mengenali 26 huruf alfabet dan 32 kosakata dasar, bukan penerjemah kalimat bebas. Kata di luar kosakata dieja huruf demi huruf.",
+    title: "Fokus pada yang paling dipakai",
+    body: "26 huruf alfabet dan 32 kosakata inti percakapan sehari-hari. Kata di luar kosakata otomatis dieja huruf demi huruf, jadi tidak ada yang hilang.",
   },
   {
-    title: "Validasi bersama komunitas",
-    body: "Materi dianggap final hanya setelah divalidasi penutur BISINDO. Masukan Teman Tuli adalah bagian dari proses, bukan pelengkap.",
+    title: "Tumbuh bersama komunitas",
+    body: "Materi dibentuk bersama penutur BISINDO. Masukan Teman Tuli adalah bagian dari proses, bukan pelengkap.",
   },
 ];
 
@@ -43,8 +43,8 @@ export default function TentangPage() {
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted">
           Percakapan antara Teman Tuli dan penutur dengar sering berhenti
-          sebelum dimulai karena tidak ada jembatan. SAPA membangun jembatan
-          itu, dimulai dari alfabet dan kosakata dasar BISINDO.
+          sebelum dimulai karena tidak ada jembatan. KawanTuli membangun
+          jembatan itu, dimulai dari alfabet dan kosakata inti BISINDO.
         </p>
       </Reveal>
 
@@ -64,7 +64,7 @@ export default function TentangPage() {
       <Reveal className="mt-14">
         <div className="rounded-xl bg-accent-soft p-6 sm:p-8">
           <h2 className="font-display text-lg font-semibold tracking-tight">
-            Untuk siapa SAPA dibangun
+            Untuk siapa KawanTuli dibangun
           </h2>
           <ul className="mt-4 space-y-2.5 text-sm leading-relaxed text-muted">
             {audiences.map((a) => (

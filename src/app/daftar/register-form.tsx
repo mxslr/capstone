@@ -17,9 +17,11 @@ import { getSupabase } from "@/lib/supabase";
 
 export function RegisterForm() {
   const router = useRouter();
+  const [step, setStep] = useState<"form" | "otp">("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -47,10 +49,7 @@ export function RegisterForm() {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      options: {
-        data: { full_name: name },
-        emailRedirectTo: `${location.origin}/auth/callback?next=/belajar`,
-      },
+      options: { data: { full_name: name } },
     });
     setLoading(false);
     if (error) {
@@ -66,17 +65,80 @@ export function RegisterForm() {
       router.refresh();
       return;
     }
-    setNotice("Cek email kamu untuk tautan konfirmasi, lalu masuk.");
+    setNotice(`Kode 6 digit dikirim ke ${email}.`);
+    setStep("otp");
+  }
+
+  async function verifyCode(e: React.FormEvent) {
+    e.preventDefault();
+    const supabase = getSupabase();
+    if (!supabase) return;
+    setLoading(true);
+    setError(null);
+    const { error } = await supabase.auth.verifyOtp({
+      email,
+      token: token.trim(),
+      type: "signup",
+    });
+    setLoading(false);
+    if (error) {
+      setError("Kode salah atau sudah kedaluwarsa. Coba lagi.");
+      return;
+    }
+    router.push("/belajar");
+    router.refresh();
+  }
+
+  async function resendCode() {
+    const supabase = getSupabase();
+    if (!supabase) return;
+    setLoading(true);
+    setError(null);
+    const { error } = await supabase.auth.resend({ type: "signup", email });
+    setLoading(false);
+    setNotice(error ? null : `Kode baru dikirim ke ${email}.`);
+    if (error) setError("Kode belum bisa dikirim ulang. Tunggu sebentar.");
+  }
+
+  if (step === "otp") {
+    return (
+      <AuthShell title="Verifikasi email" subtitle="Masukkan kode dari email kamu.">
+        <form onSubmit={verifyCode} className="space-y-4">
+          <FormError message={error} />
+          <FormNotice message={notice} />
+          <Field label="Kode OTP">
+            <input
+              type="text"
+              required
+              inputMode="numeric"
+              pattern="[0-9]{6}"
+              maxLength={6}
+              value={token}
+              onChange={(e) => setToken(e.target.value)}
+              className={`${inputClass} text-center text-lg tracking-[0.5em]`}
+              placeholder="000000"
+            />
+          </Field>
+          <SubmitButton loading={loading}>Verifikasi</SubmitButton>
+          <button
+            type="button"
+            onClick={resendCode}
+            className="w-full text-sm text-muted transition-colors hover:text-accent"
+          >
+            Kirim ulang kode
+          </button>
+        </form>
+      </AuthShell>
+    );
   }
 
   return (
-    <AuthShell title="Buat akun" subtitle="Gratis, langsung dari browser.">
+    <AuthShell title="Buat akun" subtitle="Coba gratis, langsung dari browser.">
       <div className="space-y-4">
         <GoogleButton onClick={signInWithGoogle} loading={loading} />
         <Divider />
         <form onSubmit={onSubmit} className="space-y-4">
           <FormError message={error} />
-          <FormNotice message={notice} />
           <Field label="Nama">
             <input
               type="text"

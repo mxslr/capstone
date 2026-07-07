@@ -21,8 +21,8 @@ const display = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
   title: {
-    default: "SAPA, platform belajar BISINDO",
-    template: "%s | SAPA",
+    default: "KawanTuli, platform belajar BISINDO",
+    template: "%s | KawanTuli",
   },
   description:
     "Belajar dan berkomunikasi dengan BISINDO. Latihan alfabet dengan kamera on-device, avatar pemandu, dan penerjemah kosakata dasar dua arah.",

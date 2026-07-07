@@ -3,7 +3,7 @@ import { AccountSettings } from "./account-settings";
 
 export const metadata: Metadata = {
   title: "Pengaturan akun",
-  description: "Kelola profil dan password akun SAPA kamu.",
+  description: "Kelola profil dan password akun KawanTuli kamu.",
 };
 
 export default function AkunPage() {

@@ -33,6 +33,7 @@ const groups: MenuGroup[] = [
 const links = [
   { href: "/terjemah", label: "Terjemah" },
   { href: "/fitur", label: "Fitur" },
+  { href: "/#harga", label: "Harga" },
   { href: "/tentang", label: "Tentang" },
 ];
 
@@ -121,7 +122,7 @@ export function SiteHeader() {
         ref={barRef}
         className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6"
       >
-        <Link href="/" aria-label="Beranda SAPA">
+        <Link href="/" aria-label="Beranda KawanTuli">
           <SapaLogo />
         </Link>
 

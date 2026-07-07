@@ -15,7 +15,7 @@ import { Reveal } from "@/components/reveal";
 export const metadata: Metadata = {
   title: "Fitur",
   description:
-    "Practice Arena alfabet BISINDO, avatar pemandu, penerjemah dua arah, kuis harian, roleplay, dan dashboard institusi.",
+    "Practice Arena alfabet BISINDO, avatar pemandu, penerjemah dua arah, kuis harian, roleplay, dan dashboard institusi dalam satu platform.",
 };
 
 const features = [
@@ -75,11 +75,11 @@ export default function FiturPage() {
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
       <Reveal>
         <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          Semua fitur SAPA
+          Semua fitur KawanTuli
         </h1>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
-          Setiap fitur mencantumkan cakupannya. Fokus SAPA adalah alfabet dan
-          kosakata dasar BISINDO yang dikerjakan dengan benar.
+          Satu platform untuk belajar, berlatih, dan berkomunikasi dengan
+          BISINDO, langsung dari browser.
         </p>
       </Reveal>
 

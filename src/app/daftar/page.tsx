@@ -3,7 +3,7 @@ import { RegisterForm } from "./register-form";
 
 export const metadata: Metadata = {
   title: "Daftar",
-  description: "Buat akun SAPA dan mulai belajar BISINDO.",
+  description: "Buat akun KawanTuli dan mulai belajar BISINDO.",
 };
 
 export default function DaftarPage() {

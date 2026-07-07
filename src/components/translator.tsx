@@ -1,7 +1,7 @@
 "use client";
 
 /*
- * Penerjemah dua arah SAPA.
+ * Penerjemah dua arah KawanTuli.
  * Suara ke isyarat: Web Speech API (atau ketik teks), kata dalam kosakata
  * diperagakan sebagai klip, kata lain dieja huruf demi huruf.
  * Isyarat ke suara: ada di komponen sign-to-voice (kamera on-device).
@@ -193,3 +193,4 @@ export function Translator({
     </div>
   );
 }
+

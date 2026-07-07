@@ -1,5 +1,5 @@
 /*
- * Kosakata isyarat kata-level SAPA.
+ * Kosakata isyarat kata-level KawanTuli.
  * Sumber: dataset publik WL-BISINDO (glennleonali/wl-bisindo, CC BY-NC 4.0),
  * 32 kata isolasi dari 5 penutur wilayah Banten.
  * Kata di luar daftar ini dieja huruf demi huruf (fingerspelling).
@@ -34,3 +34,4 @@ export function tokenize(text: string): string[] {
     .map(normalizeWord)
     .filter(Boolean);
 }
+

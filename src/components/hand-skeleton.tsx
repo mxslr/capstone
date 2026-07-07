@@ -1,6 +1,6 @@
 /*
  * Visual signature: skeleton 21 titik landmark tangan, topologi yang sama
- * dengan keluaran MediaPipe Hand Landmarker yang dipakai SAPA di browser.
+ * dengan keluaran MediaPipe Hand Landmarker yang dipakai KawanTuli di browser.
  */
 
 const landmarks: Array<[number, number]> = [
@@ -57,7 +57,7 @@ export function HandSkeleton({ className }: { className?: string }) {
       viewBox="0 0 300 320"
       className={className}
       role="img"
-      aria-label="Ilustrasi 21 titik landmark tangan seperti yang dideteksi SAPA di browser"
+      aria-label="Ilustrasi 21 titik landmark tangan seperti yang dideteksi KawanTuli di browser"
     >
       {connections.map(([a, b]) => (
         <line
@@ -84,3 +84,4 @@ export function HandSkeleton({ className }: { className?: string }) {
     </svg>
   );
 }
+

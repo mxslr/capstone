@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-/* Simbol SAPA: gelombang sapaan, satu gerakan lambaian yang mengalir. */
+/* Simbol KawanTuli: gelombang sapaan, satu gerakan lambaian yang mengalir. */
 export function SapaMark(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -39,7 +39,7 @@ export function SapaLogo({ className = "" }: { className?: string }) {
     <span className={`inline-flex items-center gap-2 ${className}`}>
       <SapaMark className="h-7 w-7" />
       <span className="font-display text-lg font-semibold tracking-tight text-foreground">
-        SAPA
+        Kawan<span className="text-accent">Tuli</span>
       </span>
     </span>
   );

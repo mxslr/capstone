@@ -15,7 +15,7 @@ export function AuthShell({
 }) {
   return (
     <div className="mx-auto flex min-h-[70vh] w-full max-w-sm flex-col justify-center px-4 py-14">
-      <Link href="/" aria-label="Beranda SAPA" className="mb-6 inline-block w-fit">
+      <Link href="/" aria-label="Beranda KawanTuli" className="mb-6 inline-block w-fit">
         <SapaMark className="h-9 w-9" />
       </Link>
       <h1 className="font-display text-2xl font-semibold tracking-tight">{title}</h1>
