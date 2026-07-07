@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
-  BarChart3,
   CalendarClock,
   Camera,
   MessagesSquare,
@@ -15,7 +14,7 @@ import { Reveal } from "@/components/reveal";
 export const metadata: Metadata = {
   title: "Fitur",
   description:
-    "Practice Arena alfabet BISINDO, avatar pemandu, penerjemah dua arah, kuis harian, roleplay, dan dashboard institusi dalam satu platform.",
+    "Practice Arena alfabet BISINDO, avatar pemandu, penerjemah dua arah, kuis harian, dan roleplay dalam satu platform.",
 };
 
 const features = [
@@ -60,13 +59,6 @@ const features = [
     title: "Roleplay",
     scope: "Skenario apotek",
     body: "Latihan percakapan terarah dari kosakata yang sudah kamu kuasai.",
-  },
-  {
-    icon: BarChart3,
-    href: "/institusi",
-    title: "Dashboard institusi",
-    scope: "Untuk pelatihan staf",
-    body: "Pantau progres pelatihan BISINDO staf layanan publik.",
   },
 ];
 

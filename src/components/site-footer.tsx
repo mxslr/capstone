@@ -14,7 +14,7 @@ const columns = [
       { href: "/belajar", label: "Belajar" },
       { href: "/latihan", label: "Latihan" },
       { href: "/terjemah", label: "Terjemah" },
-      { href: "/institusi", label: "Institusi" },
+      { href: "/belajar/kuis", label: "Kuis harian" },
     ],
   },
   {

@@ -79,7 +79,7 @@ const plans = [
     period: "per organisasi",
     tagline: "Untuk institusi dan pelatihan staf.",
     features: [
-      "Dashboard institusi",
+      "Laporan progres tim",
       "Manajemen anggota",
       "Pelatihan staf terukur",
       "Dukungan prioritas",
