@@ -8,6 +8,7 @@ import {
   PersonStanding,
   ShieldCheck,
 } from "lucide-react";
+import { AbbiIntro } from "@/components/abbi-intro";
 import { AnimatedHand } from "@/components/animated-hand";
 import { HowItWorks } from "@/components/how-it-works";
 import { Reveal } from "@/components/reveal";
@@ -153,8 +154,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fitur */}
+      {/* Perkenalan Abbi */}
       <section className="flex min-h-[calc(100dvh-4rem)] items-center">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_420px]">
+          <Reveal>
+            <p className="text-sm font-medium text-accent">Avatar Belajar Bahasa Isyarat</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl">
+              Kenalkan, Abbi
+            </h2>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-muted sm:text-lg">
+              Abbi memperagakan tiap huruf dan kosakata dengan gerakan yang
+              jelas. Ulangi sesukamu, perlambat kapan saja, dan berlatih tanpa
+              rasa sungkan.
+            </p>
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
+              Di sampingnya, Abbi sedang menyapamu: H, A, L, O.
+            </p>
+            <Link
+              href="/belajar"
+              className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:bg-accent-strong hover:shadow-lg hover:shadow-cyan-900/15"
+            >
+              Belajar bersama Abbi
+              <ArrowRight
+                size={16}
+                className="transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </Link>
+          </Reveal>
+          <Reveal delay={120}>
+            <AbbiIntro />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Fitur */}
+      <section className="flex min-h-[calc(100dvh-4rem)] items-center border-t border-border">
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6">
           <Reveal>
             <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-4xl">

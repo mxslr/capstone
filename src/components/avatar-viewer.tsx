@@ -60,6 +60,23 @@ type BoneTargets = Map<string, THREE.Quaternion>;
  * masih berpose huruf terakhir (itu membuat pose menumpuk dan makin rusak). */
 const restPoseCache = new WeakMap<THREE.Object3D, Map<string, THREE.Quaternion>>();
 
+const DEFAULT_MODEL = "/models/avatar.glb";
+
+/* Normalisasi skala sekali per scene: model konversi FBX Mixamo memakai
+ * satuan cm sehingga 100x terlalu besar. Origin karakter di kaki, jadi
+ * cukup skala supaya tinggi sekitar 1.75 unit. */
+const normalizedScenes = new WeakSet<THREE.Object3D>();
+
+function normalizeScale(scene: THREE.Object3D) {
+  if (normalizedScenes.has(scene)) return;
+  normalizedScenes.add(scene);
+  const box = new THREE.Box3().setFromObject(scene);
+  const height = box.max.y - box.min.y;
+  if (height > 3 || (height > 0 && height < 1)) {
+    scene.scale.multiplyScalar(1.75 / height);
+  }
+}
+
 function isTwoHanded(pose: LetterPose): boolean {
   if (pose.forceTwoHanded) return !!pose.left && !!pose.right;
   return (
@@ -74,18 +91,21 @@ function Model({
   pose,
   transitionSpeed = 6,
   viaNeutral = true,
+  modelUrl = DEFAULT_MODEL,
 }: {
   pose: LetterPose | null;
   transitionSpeed?: number;
   viaNeutral?: boolean;
+  modelUrl?: string;
 }) {
-  const { scene } = useGLTF("/models/avatar.glb");
+  const { scene } = useGLTF(modelUrl);
   const bonesRef = useRef<Map<string, THREE.Bone>>(new Map());
   const restRef = useRef<Map<string, THREE.Quaternion>>(new Map());
   const targetsRef = useRef<BoneTargets>(new Map());
 
   // kumpulkan tulang dan simpan pose istirahat
   useEffect(() => {
+    normalizeScale(scene);
     const bones = new Map<string, THREE.Bone>();
     scene.traverse((o) => {
       if ((o as THREE.Bone).isBone) {
@@ -380,10 +400,12 @@ export function AvatarViewer({
   pose,
   transitionSpeed,
   viaNeutral,
+  modelUrl,
 }: {
   pose: LetterPose | null;
   transitionSpeed?: number;
   viaNeutral?: boolean;
+  modelUrl?: string;
 }) {
   const dpr = useMemo<[number, number]>(() => [1, 1.5], []);
   return (
@@ -401,6 +423,7 @@ export function AvatarViewer({
           pose={pose}
           transitionSpeed={transitionSpeed}
           viaNeutral={viaNeutral}
+          modelUrl={modelUrl}
         />
       </Suspense>
     </Canvas>
