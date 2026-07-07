@@ -53,18 +53,29 @@ export function AbbiIntro() {
   }, [poses]);
 
   return (
-    <div ref={rootRef} className="relative">
-      <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-b from-accent-soft to-background sm:aspect-[4/4.4]">
-        {visible && <AvatarViewer pose={poses?.[SEQUENCE[step]] ?? null} />}
+    <div ref={rootRef}>
+      <div className="relative">
+        {/* cahaya lembut di belakang Abbi, tanpa kotak supaya menyatu dengan halaman */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 top-10"
+          style={{
+            background:
+              "radial-gradient(closest-side, var(--accent-soft) 0%, transparent 100%)",
+          }}
+        />
+        <div className="relative aspect-[4/5] sm:aspect-[4/4.4]">
+          {visible && <AvatarViewer pose={poses?.[SEQUENCE[step]] ?? null} />}
+        </div>
       </div>
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+      <div className="mt-4 flex justify-center gap-2">
         {SEQUENCE.map((l, i) => (
           <span
             key={l}
             className={`flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold transition-all duration-300 ${
               i === step && poses
                 ? "bg-accent text-white shadow-lg shadow-cyan-900/20"
-                : "bg-background text-muted shadow-sm"
+                : "bg-surface text-muted"
             }`}
           >
             {l}

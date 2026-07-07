@@ -196,12 +196,12 @@ export default function Home() {
               Empat cara berlatih
             </h2>
           </Reveal>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
             {stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 60}>
-                <div className="rounded-xl bg-accent-soft px-4 py-5 text-center">
-                  <p className="font-display text-3xl font-semibold text-accent">{s.value}</p>
-                  <p className="mt-1 text-xs text-muted">{s.label}</p>
+                <div>
+                  <p className="font-display text-4xl font-semibold text-accent">{s.value}</p>
+                  <p className="mt-1.5 text-sm text-muted">{s.label}</p>
                 </div>
               </Reveal>
             ))}
