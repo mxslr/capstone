@@ -38,21 +38,6 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Kartu huruf mengambang di section CTA. */
-@keyframes float-tile {
-  0%,
-  100% {
-    transform: translateY(0) rotate(var(--tile-rotate, 0deg));
-  }
-  50% {
-    transform: translateY(-14px) rotate(var(--tile-rotate, 0deg));
-  }
-}
-
-.float-tile {
-  animation: float-tile 6s ease-in-out infinite;
-}
-
 ::selection {
   background: var(--accent-soft);
   color: var(--accent-strong);

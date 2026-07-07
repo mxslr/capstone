@@ -244,47 +244,24 @@ export default function Home() {
       </section>
 
       {/* CTA akhir */}
-      <section className="relative flex min-h-[calc(100dvh-4rem)] items-center overflow-hidden bg-gradient-to-b from-background via-accent-soft to-background">
-        {/* gelombang dekoratif */}
-        <svg
-          viewBox="0 0 1440 320"
-          className="pointer-events-none absolute inset-x-0 bottom-0 w-full opacity-60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M0 220C240 140 480 140 720 200C960 260 1200 260 1440 180V320H0Z"
-            fill="#cffafe"
-          />
-          <path
-            d="M0 260C260 190 520 190 760 240C1000 290 1240 285 1440 230V320H0Z"
-            fill="#a5f3fc"
-            opacity="0.6"
-          />
-        </svg>
-
-        {/* kartu huruf isyarat mengambang */}
-        {[
-          { letter: "K", className: "left-[7%] top-[16%]", rotate: "-8deg", delay: "0s" },
-          { letter: "A", className: "left-[16%] bottom-[24%]", rotate: "6deg", delay: "1.4s" },
-          { letter: "W", className: "right-[15%] top-[14%]", rotate: "7deg", delay: "0.7s" },
-          { letter: "N", className: "right-[7%] bottom-[30%]", rotate: "-6deg", delay: "2.1s" },
-          { letter: "T", className: "left-[30%] top-[9%]", rotate: "4deg", delay: "2.8s" },
-          { letter: "U", className: "right-[30%] bottom-[14%]", rotate: "-5deg", delay: "3.5s" },
-        ].map((tile) => (
-          <span
-            key={tile.letter}
-            aria-hidden="true"
-            className={`float-tile absolute hidden h-16 w-16 items-center justify-center rounded-2xl border border-border bg-background font-display text-2xl font-semibold text-accent shadow-lg shadow-cyan-900/10 sm:flex ${tile.className}`}
-            style={{ "--tile-rotate": tile.rotate, animationDelay: tile.delay } as React.CSSProperties}
-          >
-            {tile.letter}
-          </span>
-        ))}
-
+      <section className="relative flex min-h-[calc(100dvh-4rem)] items-center border-t border-border">
         <div className="relative mx-auto w-full max-w-3xl px-4 py-14 text-center sm:px-6">
           <Reveal>
-            <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-5xl">
+            <svg
+              viewBox="0 0 120 24"
+              className="mx-auto w-20"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 16C24 6 40 6 58 13C76 20 94 20 114 9"
+                stroke="#22d3ee"
+                strokeWidth="5"
+                strokeLinecap="round"
+                fill="none"
+                opacity="0.8"
+              />
+            </svg>
+            <h2 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-5xl">
               Mulai dari huruf pertamamu
             </h2>
             <p className="mx-auto mt-4 max-w-md text-base text-muted">
@@ -300,7 +277,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/masuk"
-                className="inline-flex items-center justify-center rounded-lg border border-accent/30 bg-background/70 px-7 py-3 text-sm font-medium text-accent backdrop-blur transition-colors hover:border-accent"
+                className="inline-flex items-center justify-center rounded-lg border border-border px-7 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
               >
                 Sudah punya akun
               </Link>
