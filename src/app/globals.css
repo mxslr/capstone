@@ -22,19 +22,35 @@
   --color-accent-strong: var(--accent-strong);
   --color-accent-bright: var(--accent-bright);
   --color-accent-soft: var(--accent-soft);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-jakarta);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-display);
+  --font-display: var(--font-jakarta);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans), var(--font-geist-sans), system-ui, sans-serif;
 }
 
 .font-display {
-  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-display), var(--font-geist-sans), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Kartu huruf mengambang di section CTA. */
+@keyframes float-tile {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tile-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(-14px) rotate(var(--tile-rotate, 0deg));
+  }
+}
+
+.float-tile {
+  animation: float-tile 6s ease-in-out infinite;
 }
 
 ::selection {

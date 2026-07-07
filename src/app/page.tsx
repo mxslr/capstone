@@ -8,7 +8,7 @@ import {
   PersonStanding,
   ShieldCheck,
 } from "lucide-react";
-import { HandSkeleton } from "@/components/hand-skeleton";
+import { AnimatedHand } from "@/components/animated-hand";
 import { HowItWorks } from "@/components/how-it-works";
 import { Reveal } from "@/components/reveal";
 
@@ -128,7 +128,7 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal delay={150} className="mx-auto hidden w-56 sm:block sm:w-full sm:max-w-xs">
-            <HandSkeleton className="w-full" />
+            <AnimatedHand className="w-full" />
             <p className="mt-3 text-center text-xs text-muted">
               21 titik tangan, dideteksi secara real time
             </p>
@@ -244,8 +244,45 @@ export default function Home() {
       </section>
 
       {/* CTA akhir */}
-      <section className="flex min-h-[calc(100dvh-4rem)] items-center bg-accent-soft">
-        <div className="mx-auto w-full max-w-3xl px-4 py-14 text-center sm:px-6">
+      <section className="relative flex min-h-[calc(100dvh-4rem)] items-center overflow-hidden bg-gradient-to-b from-background via-accent-soft to-background">
+        {/* gelombang dekoratif */}
+        <svg
+          viewBox="0 0 1440 320"
+          className="pointer-events-none absolute inset-x-0 bottom-0 w-full opacity-60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 220C240 140 480 140 720 200C960 260 1200 260 1440 180V320H0Z"
+            fill="#cffafe"
+          />
+          <path
+            d="M0 260C260 190 520 190 760 240C1000 290 1240 285 1440 230V320H0Z"
+            fill="#a5f3fc"
+            opacity="0.6"
+          />
+        </svg>
+
+        {/* kartu huruf isyarat mengambang */}
+        {[
+          { letter: "K", className: "left-[7%] top-[16%]", rotate: "-8deg", delay: "0s" },
+          { letter: "A", className: "left-[16%] bottom-[24%]", rotate: "6deg", delay: "1.4s" },
+          { letter: "W", className: "right-[15%] top-[14%]", rotate: "7deg", delay: "0.7s" },
+          { letter: "N", className: "right-[7%] bottom-[30%]", rotate: "-6deg", delay: "2.1s" },
+          { letter: "T", className: "left-[30%] top-[9%]", rotate: "4deg", delay: "2.8s" },
+          { letter: "U", className: "right-[30%] bottom-[14%]", rotate: "-5deg", delay: "3.5s" },
+        ].map((tile) => (
+          <span
+            key={tile.letter}
+            aria-hidden="true"
+            className={`float-tile absolute hidden h-16 w-16 items-center justify-center rounded-2xl border border-border bg-background font-display text-2xl font-semibold text-accent shadow-lg shadow-cyan-900/10 sm:flex ${tile.className}`}
+            style={{ "--tile-rotate": tile.rotate, animationDelay: tile.delay } as React.CSSProperties}
+          >
+            {tile.letter}
+          </span>
+        ))}
+
+        <div className="relative mx-auto w-full max-w-3xl px-4 py-14 text-center sm:px-6">
           <Reveal>
             <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-5xl">
               Mulai dari huruf pertamamu
@@ -263,10 +300,24 @@ export default function Home() {
               </Link>
               <Link
                 href="/masuk"
-                className="inline-flex items-center justify-center rounded-lg border border-accent/30 px-7 py-3 text-sm font-medium text-accent transition-colors hover:border-accent"
+                className="inline-flex items-center justify-center rounded-lg border border-accent/30 bg-background/70 px-7 py-3 text-sm font-medium text-accent backdrop-blur transition-colors hover:border-accent"
               >
                 Sudah punya akun
               </Link>
+            </div>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted">
+              <span className="flex items-center gap-2">
+                <Check size={15} className="text-accent" aria-hidden="true" />
+                26 huruf alfabet
+              </span>
+              <span className="flex items-center gap-2">
+                <Check size={15} className="text-accent" aria-hidden="true" />
+                32 kosakata inti
+              </span>
+              <span className="flex items-center gap-2">
+                <Check size={15} className="text-accent" aria-hidden="true" />
+                100% di perangkatmu
+              </span>
             </div>
           </Reveal>
         </div>
