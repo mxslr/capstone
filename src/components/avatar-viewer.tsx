@@ -54,6 +54,12 @@ const TRANSITION_SPEED = 6; // besar = transisi lebih cepat
 
 type BoneTargets = Map<string, THREE.Quaternion>;
 
+/* useGLTF men-cache dan membagikan scene yang sama antar mount. Pose
+ * istirahat harus diambil SEKALI saat skeleton masih bersih; mount
+ * berikutnya memakai cache ini, bukan membaca ulang tulang yang mungkin
+ * masih berpose huruf terakhir (itu membuat pose menumpuk dan makin rusak). */
+const restPoseCache = new WeakMap<THREE.Object3D, Map<string, THREE.Quaternion>>();
+
 function isTwoHanded(pose: LetterPose): boolean {
   if (pose.forceTwoHanded) return !!pose.left && !!pose.right;
   return (
@@ -81,13 +87,27 @@ function Model({
   // kumpulkan tulang dan simpan pose istirahat
   useEffect(() => {
     const bones = new Map<string, THREE.Bone>();
-    const rest = new Map<string, THREE.Quaternion>();
     scene.traverse((o) => {
       if ((o as THREE.Bone).isBone) {
         bones.set(o.name, o as THREE.Bone);
-        rest.set(o.name, o.quaternion.clone());
       }
     });
+
+    let rest = restPoseCache.get(scene);
+    if (!rest) {
+      // mount pertama: skeleton masih di pose istirahat asli
+      rest = new Map<string, THREE.Quaternion>();
+      for (const [name, b] of bones) rest.set(name, b.quaternion.clone());
+      restPoseCache.set(scene, rest);
+    } else {
+      // mount ulang: kembalikan skeleton ke istirahat supaya mulai bersih
+      for (const [name, b] of bones) {
+        const q = rest.get(name);
+        if (q) b.quaternion.copy(q);
+      }
+      scene.updateMatrixWorld(true);
+    }
+
     bonesRef.current = bones;
     restRef.current = rest;
   }, [scene]);
